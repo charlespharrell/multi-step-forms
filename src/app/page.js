@@ -8,7 +8,7 @@ export default function Home() {
                      w-full min-h-screen
                      items-center
                      justify-center
-                     flex ">
+                     flex">
        <Form/>
     </div>
   );

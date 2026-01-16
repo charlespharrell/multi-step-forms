@@ -3,9 +3,10 @@ import { useState } from 'react'
 import Image from 'next/image'
 import Header from './Header'
 import Footer from './Footer'
-import { PageDisplay } from '.'
-import { initialFormData } from '.'
-import SideBar from './SideBar'
+import { initialFormData, PageDisplay } from '.'
+import SideBar from './SideBar/SideBar'
+import MobileSide from './SideBar/MobileSide'
+
 
 export default function Form() {
 
@@ -14,20 +15,19 @@ export default function Form() {
 
   return (
     <div className='md:bg-[hsl(0,100%,100%)]
-                    
+                     w-full
                      md:w-[70%]
                      min-h-screen
                      md:min-h-0
-                     bg-[hsl(228,100%,84%)]
-                     
+                     bg-[hsl(228,100%,84%)]                     
                      max-w-5xl 
-                     md:p-10 rounded-xl'>
-
+                     md:p-5 lg:p-10 rounded-xl'>
+                     
        <div className='lg:gap-10
                        relative                        
                        justify-center  
                        flex
-                       md:gap-10
+                       md:gap-2
                        flex-col
                        md:flex-row
                                        
@@ -36,11 +36,10 @@ export default function Form() {
             <div className='relative 
                         md:w-[50%]
                         hidden md:block
-                        lg:w-[35%]
-                       
+                        lg:w-[35%]                      
                         '>
                           <div>
-                            <SideBar/>
+                            <SideBar page={page}/>                          
                           </div>
 
                   <Image
@@ -49,9 +48,15 @@ export default function Form() {
                       className='object-cover rounded-lg'
                       fill
                       />
+
             </div>
 
-          <div className=' relative h-[180px] w-full md:hidden'>
+          <div className=' relative h-[180px] w-full md:hidden block'>
+
+              <div>
+                 <MobileSide page={page}/>
+              </div>
+                          
               <Image
                   src='/bg-sidebar-mobile.svg'
                   alt='Mobile background'
@@ -72,12 +77,15 @@ export default function Form() {
                            md:mt-[0]               
                          md:w-[100%]'>
 
-            <Header page={page}/>
+            <Header page={page} />
 
-            <div><PageDisplay 
+            <div className=' h-57'>
+                <PageDisplay
                       page={page}
                       formData={formData}
-                      setFormData={setFormData}/></div>
+                      setFormData={setFormData}/>
+            </div>
+                      
 
             <Footer page={page} setPage={setPage}/>
         </div>

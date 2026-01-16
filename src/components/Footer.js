@@ -3,7 +3,7 @@ import { FormTitles } from '.'
 
 export default function Footer({page, setPage}) {
   return (
-    <div className='flex justify-between mt-15 md:mt-6'>
+    <div className='flex justify-between mt-20 md:mt-1'>
       <button className='text-[hsl(231,11%,63%)] cursor-pointer hover:text-[hsl(243,100%,62%)]'
            disabled = {page === 0}
            onClick={() => setPage((currPage)=>currPage - 1 )}
