@@ -1,18 +1,40 @@
 import React, { useState } from 'react'
-import { selects } from '@/components'
 import Image from 'next/image'
+import { selects } from '@/components'
 
-export default function PlanCard({isYearly, setIsYearly}) {
+export default function PlanCard({
+        isYearly,         
+        formData,
+        setFormData, 
+      
+      }) {
     const [selectedIndex, setSelectedIndex]= useState(null)
+
+    const handleSelect = (select, index) =>{
+      setSelectedIndex(index)
+
+      const planData = {
+      name: select.plantype,
+      amount: isYearly ? select.yearly_amount : select.monthly_amount,
+      billing: isYearly ? 'yearly' : 'monthly',
+    }
+
+      setFormData((prev) =>({
+        ...prev,
+        plan: planData,
+      }))
+      
+    }
 
   return (
     <div className='flex flex-col p-0 sm:flex-row justify-center w-full gap-2 '>
       {
         selects.map((select, index)=>{
             const isSelected = selectedIndex === index
+
             return (
             <div key={index}
-                   onClick={()=>setSelectedIndex(index)} 
+                   onClick={()=>handleSelect(select, index)} 
                         className={` w-full  sm:w-[30%] h-17.5 sm:h-40 rounded-md
                             flex flex-row sm:flex-col gap-3 sm:justify-center items-center
                             sm:items-start p-3 cursor-pointer

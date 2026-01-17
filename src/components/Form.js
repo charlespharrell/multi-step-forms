@@ -12,6 +12,14 @@ export default function Form() {
 
   const [page, setPage]= useState(0)
   const [formData, setFormData] = useState(initialFormData)
+  const [isYearly, setIsYearly] = useState(false)
+
+  const handleClick =()=>{
+    setIsYearly(prev => !prev)
+  }
+  const handleDataCLick = (event)=>{
+    setFormData({...formData, select_amount: event.target.value})
+  }
 
   return (
     <div className='md:bg-[hsl(0,100%,100%)]
@@ -82,8 +90,15 @@ export default function Form() {
             <div className=' h-57'>
                 <PageDisplay
                       page={page}
+                      setPage={setPage}
                       formData={formData}
-                      setFormData={setFormData}/>
+                      setFormData={setFormData}
+                      isYearly={isYearly}
+                      setIsYearly={setIsYearly}
+                      handleClick={handleClick}
+                      handleDataCLick={handleDataCLick}
+                      />
+                      
             </div>
                       
 

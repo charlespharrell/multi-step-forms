@@ -1,7 +1,7 @@
  import PersonalInfo from './Body/PersonalInfo/PersonalInfo'
 import SelectPlan from './Body/SelectPlan/SelectPlan'
-import PickAdd from './PickAdd'
-import Finish from './Finish'
+import PickAdd from './Body/PickAdd/PickAdd'
+import Finish from './Body/Finish/Finish'
 
  
  export const FormTitles = [
@@ -19,36 +19,46 @@ export const subFormTitles = [
                               'Double check everything looks OK before submitting'
                                 ]
 
-export const PageDisplay = ({page, formData, setFormData}) => {
+export const PageDisplay = ({page, setPage, formData, setFormData, isYearly, setIsyearly, handleDataCLick, handleClick}) => {
                                 
                     if (page === 0){
                         return <PersonalInfo formData={formData} setFormData={setFormData} />
                     }
                 
                     else if (page === 1){ 
-                        return <SelectPlan/>
+                        return <SelectPlan
+                                     isYearly={isYearly} 
+                                     setIsyearly={setIsyearly}
+                                     handleClick={handleClick}
+                                     formData={formData} 
+                                     setFormData={setFormData}
+                                     handleDataCLick={handleDataCLick}
+                                      />
                     }
                 
                     else if (page === 2){
-                        return <PickAdd/>
+                        return <PickAdd formData={formData} setFormData={setFormData} isYearly={isYearly} setIsyearly={setIsyearly}/>
                     }
                 
                     else {
-                    return <Finish/>
+                    return <Finish handleDataCLick={handleDataCLick}
+                            formData={formData}
+                            setFormData={setFormData} 
+                            isYearly={isYearly}
+                            setPage={setPage}
+                            />
                 }
                 }
 
-export const initialFormData = [
-    {name: '',},
-    {email: ''},
-    {phonenumber: ''},
-    {
-     select_amount:''
-    }
+export const initialFormData = {
+    name: '',
+    email: '',
+    phonenumber: '',
+    plan: null,
+    addOns:[],
 
 
-
-]
+}
 
 export const steps =[
     {
@@ -104,4 +114,28 @@ export const selects = [
         index: 2
     }
 ]
+export const picks = [
+    {
+        id: 1,
+        addSelect: 'Online service',
+        addInfo: 'Access to multiplayer game',
+        add_monthly_amount: '+$1/month',
+        add_yearly_amount: '+$10/yr'
+    },
+     {
+        id: 2,
+        addSelect: 'Large storage',
+        addInfo: 'Extra 1TB of cloud save',
+        add_monthly_amount: '+$2/month',
+        add_yearly_amount: '+$20/yr'
+    },
+     {
+        id: 3,
+        addSelect: 'Customizable profile',
+        addInfo: 'Custom theme on your profile',
+        add_monthly_amount: '+$2/month',
+        add_yearly_amount: '+$20/yr'
+    },
 
+
+]

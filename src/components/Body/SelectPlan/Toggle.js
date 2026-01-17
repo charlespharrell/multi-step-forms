@@ -1,10 +1,7 @@
 import React, { useState } from 'react'
-import { selects} from '@/components'
 
-
-export default function Toggle({isYearly, setIsYearly}) {
+export default function Toggle({isYearly, setIsYearly, handleClick}) {
     
-   
   return (
     <div>
         <div className='flex flex-row justify-center gap-5 mt-5
@@ -15,9 +12,9 @@ export default function Toggle({isYearly, setIsYearly}) {
                 `}>Monthly</div>
 
             <div
-                onClick={()=>setIsYearly(prev => !prev)
+                onClick={handleClick}
 
-                }
+                
                 className='  transition-transform duration-3000 ease-in-out 
                         bg-[hsl(213,96%,18%)] w-14 h-5 cursor-pointer rounded-full'>
                 
