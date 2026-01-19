@@ -25,12 +25,12 @@ export default function Finish({ formData, isYearly, setPage }) {
     formData.addOns.includes(pick.id)
   )
 
-  
-  const {name, amount, billing}=formData.plan
-  if (!formData.plan && selectedAddOns){
+  if (!formData.plan ){
     return <p className='text-gray-400'>No plan selected</p>
   }
 
+  const {name, amount, billing}=formData.plan
+  
   return (
     <div>
         <div className="flex justify-between items-center bg-[hsl(217,100%,97%)] p-4 rounded-md">

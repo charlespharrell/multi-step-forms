@@ -87,7 +87,7 @@ export default function Form() {
 
             <Header page={page} />
 
-            <div className=' h-57'>
+            <div className='h-57'>
                 <PageDisplay
                       page={page}
                       setPage={setPage}

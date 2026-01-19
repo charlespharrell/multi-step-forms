@@ -4,13 +4,13 @@ import { picks } from '@/components'
 export default function PickAdd({isYearly, setFormData, formData,}) {
 
    const togglePick = (id) => {
-    setFormData((prev) => ({
-      ...prev,
-      addOns: prev.addOns.includes(id)
-        ? prev.addOns.filter(item => item !== id)
-        : [...prev.addOns, id],
-    }))
-  }
+      setFormData((prev) => ({
+          ...prev,
+          addOns: prev.addOns.includes(id)
+          ? prev.addOns.filter(item => item !== id)
+          : [...prev.addOns, id],
+      }))
+   }
   
   return (
     <div className='flex flex-col gap-2'>

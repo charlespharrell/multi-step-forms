@@ -2,6 +2,7 @@
 import SelectPlan from './Body/SelectPlan/SelectPlan'
 import PickAdd from './Body/PickAdd/PickAdd'
 import Finish from './Body/Finish/Finish'
+import ThankYou from './ThankYou'
 
  
  export const FormTitles = [
@@ -40,7 +41,7 @@ export const PageDisplay = ({page, setPage, formData, setFormData, isYearly, set
                         return <PickAdd formData={formData} setFormData={setFormData} isYearly={isYearly} setIsyearly={setIsyearly}/>
                     }
                 
-                    else {
+                    else if (page === 3){
                     return <Finish handleDataCLick={handleDataCLick}
                             formData={formData}
                             setFormData={setFormData} 
@@ -48,6 +49,8 @@ export const PageDisplay = ({page, setPage, formData, setFormData, isYearly, set
                             setPage={setPage}
                             />
                 }
+                    else 
+                        return <ThankYou/>
                 }
 
 export const initialFormData = {
